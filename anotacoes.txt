@@ -1,0 +1,11 @@
+## Comando para configurar o kubectl para apontar para o cluster eks
+aws eks update-kubeconfig --name lanchonete_cluster --region us-east-1
+
+## Para ver o contexto atual.
+kubectl config current-context 
+
+## para listar todos os contextos disponíveis.
+kubectl config get-contexts 
+
+## Configurar um contexto
+kubectl config use-context docker-desktop
