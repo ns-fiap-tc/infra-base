@@ -99,7 +99,8 @@ resource "aws_route_table" "lanchonete_app_private_rt" {
 resource "aws_route" "private_route" {
   route_table_id         = aws_route_table.lanchonete_app_private_rt.id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.lanchonete_app_igw.id
+  #gateway_id             = aws_internet_gateway.lanchonete_app_igw.id
+  nat_gateway_id         = aws_nat_gateway.lanchonete_nat_gateway.id
 }
 
 # Associação da tabela de roteamento privada à subnet privada 1
@@ -117,4 +118,26 @@ resource "aws_route_table_association" "lanchonete_app_private_rt_association_2"
 # Cria recurso API Gateway
 resource "aws_api_gateway_rest_api" "lanchonete_cluster_api_gw" {
   name = "EKS_API_Gateway"
+}
+
+#Cria um Elastic IP para o NAT Gateway:
+resource "aws_eip" "lanchonete_nat_gateway_eip" {
+  domain = "vpc"
+
+  tags = {
+    Name = "lanchonete_nat_gateway_eip"
+  }
+}
+
+
+#Crie o NAT Gateway em uma subnet pública:
+resource "aws_nat_gateway" "lanchonete_nat_gateway" {
+  allocation_id = aws_eip.lanchonete_nat_gateway_eip.id
+  subnet_id     = aws_subnet.lanchonete_public_subnet_1.id 
+
+  tags = {
+    Name = "lanchonete_nat_gateway"
+  }
+
+  depends_on = [aws_internet_gateway.lanchonete_app_igw]
 }
