@@ -5,9 +5,11 @@ Este é o repositório que contém códigos Terraform para gerenciar infraestrut
 ## Passos para o provisionamento
 > Para completo funcionamento da plataforma, é necessário seguir o seguinte fluxo de provisionamento:
 > 1. A provisão deste repositório; [infra-base](#como-rodar-o-projeto)
-> 2. A provisão do repositório do banco de dados: [infra-bd](https://github.com/ns-fiap-tc/infra-bd);
-> 3. A provisão da aplicação principal e mock de pagamento em [tech_challenge_fiap](https://github.com/ns-fiap-tc/tech_challenge_fiap).
-> 4. A provisão da lambda e api gateway: [lambda](https://github.com/ns-fiap-tc/lambda);
+> 2. A provisão do repositório dos bancos de dados: [infra-bd](https://github.com/ns-fiap-tc/infra-bd);
+> 3. A provisão do repositório do microsserviço de categoria: [tech_challenge_fiap_ms_categoria](https://github.com/ns-fiap-tc/tech_challenge_fiap_ms_categoria);
+> 4. A provisão do repositório do microsserviço de produto: [tech_challenge_fiap_ms_produto](https://github.com/ns-fiap-tc/tech_challenge_fiap_ms_produto);
+> 5. A provisão do repositório do microsserviço de pagamento e pagamento-mock: [tech_challenge_fiap_ms_pagamento](https://github.com/ns-fiap-tc/tech_challenge_fiap_ms_pagamento);
+> 6. A provisão da aplicação principal: [tech_challenge_fiap](https://github.com/ns-fiap-tc/tech_challenge_fiap).
 
 
 ## 🚀 Como rodar o projeto
